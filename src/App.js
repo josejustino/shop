@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+/* istanbul ignore file */
+import { BrowserRouter } from 'react-router-dom';
+
+import './styles/globals.css';
+
+import { makeServer } from "./miragejs/server";
+
+import Routes from './routes';
+import Header from './components/header';
+import Footer from './components/footer';
+
+if (process.env.NODE_ENV === "development") {
+  // Mirage JS code will ever reach your production build.
+  makeServer({ environment: "development" })
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-white">
+      <Header />
+
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
+
+      <Footer />
     </div>
   );
 }
