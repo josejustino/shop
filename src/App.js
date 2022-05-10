@@ -7,6 +7,7 @@ import { makeServer } from "./miragejs/server";
 
 import Routes from './routes';
 import Header from './components/header';
+import Cart from './components/cart';
 import Footer from './components/footer';
 
 if (process.env.NODE_ENV === "development") {
@@ -18,6 +19,7 @@ function App() {
   return (
     <div className="bg-white">
       <Header />
+      <Cart />
 
       <BrowserRouter>
         <Routes />

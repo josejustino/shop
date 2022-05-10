@@ -1,6 +1,11 @@
+/* istanbul ignore file */
 import React from 'react';
 
-export default function Header({ toggle }) {
+import { useCartStore } from '../store/cart';
+
+export default function Header() {
+  const toggle = useCartStore(store => store.actions.toggle);
+
   return (
     <header>
       <div className="container mx-auto px-6 py-3">
